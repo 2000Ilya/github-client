@@ -1,24 +1,35 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from "react";
+import "./App.css";
+import RepoList from "./layouts/RepoList/RepoList";
+
+import GitHubStore from "./store/GitHubStore/GitHubStore";
+
+const gitHubStore = new GitHubStore();
+
+const EXAMPLE_ORGANIZATION = "ktsstudio";
+
+gitHubStore
+  .getOrganizationReposList({
+    organizationName: EXAMPLE_ORGANIZATION,
+    queryParameters: {},
+  })
+  .then((result) => {
+    console.log(result); // в консоли появится список репозиториев в ktsstudio
+  });
+
+gitHubStore
+  .getOrganizationReposList({
+    organizationName: EXAMPLE_ORGANIZATION,
+    queryParameters: { sort: "created" },
+  })
+  .then((result) => {
+    console.log(result); // в консоли появится список репозиториев в ktsstudio
+  });
 
 function App() {
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <RepoList />
     </div>
   );
 }
