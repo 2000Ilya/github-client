@@ -11,6 +11,11 @@ export type GetOrganizationReposListParams = {
   queryParameters: {};
 };
 
+export type CreateRepoParams = {
+  repoName: string;
+  token: string;
+};
+
 export type SearchOrganizationReposList = { organizationName: string };
 
 export type ApiResp<dataT> = {
@@ -29,7 +34,5 @@ export interface IGitHubStore {
     params: GetOrganizationReposListParams
   ): Promise<ApiResp<RepoItem[]>>;
 
-  //   searchOrganizationReposList(
-  //     params: SearchOrganizationReposList
-  //   ): Promise<ApiResp<RepoItem[]>>;
+  createRepo(params: CreateRepoParams): Promise<ApiResp<string>>;
 }
