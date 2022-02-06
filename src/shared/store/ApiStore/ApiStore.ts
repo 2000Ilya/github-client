@@ -16,7 +16,7 @@ export default class ApiStore implements IApiStore {
     // TODO: Напишите здесь код, который с помощью fetch будет делать запрос
     let url =
       params.method === "GET"
-        ? this.baseUrl + params.endpoint + qs.stringify(params.data)
+        ? this.baseUrl + params.endpoint + "?" + qs.stringify(params.data)
         : this.baseUrl + params.endpoint;
 
     let commonRequestParams = {
@@ -26,7 +26,7 @@ export default class ApiStore implements IApiStore {
 
     let postRequestParams = {
       ...commonRequestParams,
-      body: params.data,
+      body: JSON.stringify(params.data),
     };
 
     let requestParams =
