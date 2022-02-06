@@ -1,5 +1,5 @@
 // Здесь необходимо продемонстрировать создание и использование GitHubStore
-
+import token from "../token";
 import GitHubStore from "../store/GitHubStore/GitHubStore";
 
 const gitHubStore = new GitHubStore();
@@ -19,6 +19,15 @@ gitHubStore
   .getOrganizationReposList({
     organizationName: EXAMPLE_ORGANIZATION,
     queryParameters: { sort: "created" },
+  })
+  .then((result) => {
+    console.log(result); // в консоли появится список репозиториев в ktsstudio
+  });
+
+gitHubStore
+  .createRepo({
+    repoName: "Test name",
+    token,
   })
   .then((result) => {
     console.log(result); // в консоли появится список репозиториев в ktsstudio
