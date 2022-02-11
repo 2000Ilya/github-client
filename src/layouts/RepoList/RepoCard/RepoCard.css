@@ -1,10 +1,8 @@
 .repo-card {
-    width: 35.7rem;
-    height: 10.4rem;
     background-color: var(--background);
-    border: 0.1rem solid var(--colorBorder);
+    border: 1px solid var(--colorBorder);
     box-sizing: border-box;
-    border-radius: 0.6rem;
+    border-radius: 6px;
     display: flex;
     flex-direction: row;
     justify-content: flex-start;
@@ -14,7 +12,7 @@
 }
 
 .repo-card:hover {
-    cursor: url(../../resources/icons/cursor.svg), pointer;
+    cursor: pointer;
 }
 
 .repo-card__text-content {
@@ -27,7 +25,7 @@
 }
 
 .repo-card__title {
-    font-family: "Roboto Bold";
+    font-weight: bold;
     font-size: 1.6rem;
     line-height: 1.9rem;
     color: var(--colorDefault);
@@ -43,8 +41,7 @@
 
 .repo-card__link:hover {
     color: var(--linkHover);
-    cursor: url(../../resources/icons/cursor.svg),
-        pointer;
+    cursor: pointer;
 }
 
 .repo-card__bottom-group {
@@ -53,25 +50,18 @@
     gap: 2rem;
 }
 
-.repo-card__contributors-info {}
-
-.repo-card__contributors-info svg {
+.repo-card__star-icon {
     vertical-align: middle;
     height: 1.4rem;
     width: 1.4rem;
-}
-
-.repo-card__contributors-info path {
     fill: var(--starAccent);
 }
 
-.repo-card__last-update-info {}
-
 .repo-card__default-text {
-    font-family: "Roboto";
+    font-weight: normal;
     font-size: 1.4rem;
     line-height: 1.6rem;
-    color: #7E7E7E;
+    color: var(--colorHint);
 }
 
 .repo-card__default-text span {

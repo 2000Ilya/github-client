@@ -6,7 +6,7 @@
 }
 
 .repo-avatar__first-letter {
-    font-family: "Roboto Bold";
+    font-weight: bold;
     font-size: 4rem;
     line-height: 4.7rem;
     color: var(--background);
