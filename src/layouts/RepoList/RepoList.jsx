@@ -3,17 +3,17 @@ import RepoCard from "./RepoCard/RepoCard";
 import "./RepoList.css";
 import { ReactComponent as SeacrhIcon } from "../resources/icons/search.svg";
 
-function RepoList() {
+const RepoList = () => {
   return (
-    <div className={"repo-list"}>
+    <div className="repo-list">
       <input
-        className={"repo-list__search-input"}
+        className="repo-list__search-input"
         placeholder={"Введите название организации"}
       />
-      <button className={"repo-list__search-button flex-align-center"}>
-        <SeacrhIcon />
+      <button className="repo-list__search-button flex-align-center">
+        <SeacrhIcon className="repo-list__search-button-icon" />
       </button>
-      <div className={"repo-list__container"}>
+      <div className="repo-list__container">
         <RepoCard />
         <RepoCard />
         <RepoCard />
@@ -31,6 +31,6 @@ function RepoList() {
       </div>
     </div>
   );
-}
+};
 
 export default RepoList;

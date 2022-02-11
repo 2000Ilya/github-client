@@ -2,23 +2,23 @@ import React from "react";
 import { getFirstLetter } from "../../../helpers/parseFunctions";
 import "./RepoAvatar.css";
 
-function RepoAvatar({ avatarLink, repoName }) {
+const RepoAvatar = ({ avatarLink, repoName }) => {
   return (
-    <div className={"repo-avatar flex-align-center image-container"}>
+    <div className="repo-avatar flex-align-center image-container">
       {avatarLink ? (
         <img
           src={avatarLink}
-          className={"repo-avatar__icon"}
+          className="repo-avatar__icon image-container__icon"
           alt={"avatar"}
           crossOrigin="anonymous"
         />
       ) : (
-        <span className={"repo-avatar__first-letter"}>
+        <span className="repo-avatar__first-letter">
           {getFirstLetter(repoName)}
         </span>
       )}
     </div>
   );
-}
+};
 
 export default RepoAvatar;
