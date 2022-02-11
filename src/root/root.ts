@@ -1,4 +1,3 @@
-// Здесь необходимо продемонстрировать создание и использование GitHubStore
 import token from "../token";
 import GitHubStore from "../store/GitHubStore/GitHubStore";
 
@@ -21,7 +20,7 @@ gitHubStore
     queryParameters: { sort: "created" },
   })
   .then((result) => {
-    console.log(result); // в консоли появится список репозиториев в ktsstudio
+    console.log(result); // в консоли появится отсортированный по дате создания список репозиториев  в ktsstudio
   });
 
 gitHubStore
@@ -30,7 +29,5 @@ gitHubStore
     token,
   })
   .then((result) => {
-    console.log(result); // в консоли появится список репозиториев в ktsstudio
+    console.log(result);
   });
-
-// В ДЗ 1 Не требуется визуально в разметке отображать результат запроса к сети. Достаточно вывести в console.log
