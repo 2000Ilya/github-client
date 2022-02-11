@@ -1,11 +1,13 @@
 @font-face {
-  font-family: 'Roboto';
+  font-family: "Roboto";
   src: url('./layouts/resources/fonts/Roboto-Regular.ttf');
+  font-weight: normal;
 }
 
 @font-face {
-  font-family: 'Roboto Bold';
+  font-family: "Roboto";
   src: url('./layouts/resources/fonts/Roboto-Bold.ttf');
+  font-weight: bold;
 }
 
 html {
@@ -20,8 +22,11 @@ body {
   --background: #FFFFFF;
   --starAccent: #FF9432;
   --linkHover: #208FBF;
+  --inputDisabled: #f9f9f9;
 
   margin: 0;
+
+  font-family: "Roboto";
 }
 
 .flex-align-center {
@@ -34,7 +39,7 @@ body {
   overflow: hidden;
 }
 
-.image-container img {
+.image-container__icon {
   width: 100%;
   height: 100%;
   object-fit: cover;
