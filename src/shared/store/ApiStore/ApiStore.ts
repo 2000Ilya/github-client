@@ -1,42 +1,61 @@
-import { ApiResponse, IApiStore, RequestParams } from "./types";
+import {
+  ApiResponse,
+  HTTPMethod,
+  IApiStore,
+  RequestParams,
+  StatusHTTP,
+} from "./types";
 import qs from "qs";
 
 export default class ApiStore implements IApiStore {
   readonly baseUrl: string;
 
   constructor(baseUrl: string) {
-    // TODO: Примите из параметров конструктора baseUrl
-    // и присвойте его в this.baseUrl
     this.baseUrl = baseUrl;
   }
 
-  request<SuccessT, ErrorT = any, ReqT = {}>(
+  async request<SuccessT, ErrorT = any, ReqT = {}>(
     params: RequestParams<ReqT>
   ): Promise<ApiResponse<SuccessT, ErrorT>> {
-    // TODO: Напишите здесь код, который с помощью fetch будет делать запрос
-    let url =
-      params.method === "GET"
-        ? this.baseUrl + params.endpoint + "?" + qs.stringify(params.data)
-        : this.baseUrl + params.endpoint;
+    let url = `${this.baseUrl}${params.endpoint}${
+      params.method === HTTPMethod.GET ? `?${qs.stringify(params.data)}` : ""
+    }`;
 
     let commonRequestParams = {
       headers: params.headers,
       method: params.method,
     };
 
-    let postRequestParams = {
-      ...commonRequestParams,
-      body: JSON.stringify(params.data),
-    };
-
     let requestParams =
-      params.method === "GET" ? commonRequestParams : postRequestParams;
+      params.method === HTTPMethod.GET
+        ? commonRequestParams
+        : {
+            ...commonRequestParams,
+            body: JSON.stringify(params.data),
+          };
 
-    // return new Promise(
-    return fetch(url, requestParams).then(
-      (res) => res.json(),
-      (rej) => ({ success: false, data: rej, status: 404 })
-    );
-    // );
+    try {
+      let response = await fetch(url, requestParams);
+
+      if (response.ok) {
+        return {
+          success: true,
+          data: await response.json(),
+          status: response.status,
+        };
+      }
+
+      return {
+        success: false,
+        data: await response.json(),
+        status: response.status,
+      };
+    } catch (error) {
+      return {
+        success: false,
+        data: error,
+        status: StatusHTTP.UNEXPECTED_ERROR,
+      };
+    }
   }
 }
