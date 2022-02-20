@@ -1,0 +1,28 @@
+.search-input {
+    grid-area: search-input;
+    width: 29.5rem;
+    height: 5rem;
+    background: var(--background);
+    border: 1px solid var(--colorBorder);
+    box-sizing: border-box;
+    border-radius: 6px;
+    color: var(--colorDefault);
+    font-weight: normal;
+    font-size: 1.4rem;
+    padding: 1.2rem;
+}
+
+.search-input:focus {
+    border: 1px solid var(--accent);
+    outline: none;
+}
+
+.search-input:disabled {
+    background-color: var(--inputDisabled);
+    color: var(--colorHint);
+}
+
+.search-input::placeholder {
+    color: var(--colorHint);
+    font-size: 1.4rem;
+}
