@@ -1,12 +1,12 @@
 @font-face {
   font-family: "Roboto";
-  src: url('./layouts/resources/fonts/Roboto-Regular.ttf');
+  src: url('./resources/fonts/Roboto-Regular.ttf');
   font-weight: normal;
 }
 
 @font-face {
   font-family: "Roboto";
-  src: url('./layouts/resources/fonts/Roboto-Bold.ttf');
+  src: url('./resources/fonts/Roboto-Bold.ttf');
   font-weight: bold;
 }
 
