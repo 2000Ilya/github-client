@@ -1,0 +1,6 @@
+.star-icon {
+    vertical-align: middle;
+    height: 1.4rem;
+    width: 1.4rem;
+    fill: var(--starAccent);
+}
