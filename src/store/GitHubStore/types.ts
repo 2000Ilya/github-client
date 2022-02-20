@@ -20,6 +20,7 @@ export type SearchOrganizationReposList = { organizationName: string };
 
 export type ApiResp<dataT> = {
   data: dataT;
+  success: boolean;
 };
 
 export type RepoItem = {
@@ -27,6 +28,8 @@ export type RepoItem = {
   url: string;
   name: string;
   updated_at: string;
+  owner: { login: string; url: string };
+  id: number;
 };
 
 export interface IGitHubStore {
