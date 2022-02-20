@@ -1,3 +1,5 @@
+import qs from "qs";
+
 import {
   ApiResponse,
   HTTPMethod,
@@ -5,7 +7,6 @@ import {
   RequestParams,
   StatusHTTP,
 } from "./types";
-import qs from "qs";
 
 export default class ApiStore implements IApiStore {
   readonly baseUrl: string;

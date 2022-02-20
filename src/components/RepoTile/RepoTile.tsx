@@ -2,6 +2,7 @@ import React from "react";
 
 import { RepoItem } from "@store/GitHubStore/types";
 import { getFirstLetter } from "@utils/parseFunctions";
+
 import Avatar from "../Avatar";
 import StarIcon from "../StarIcon";
 import "./RepoTile.css";
