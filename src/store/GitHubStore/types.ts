@@ -11,6 +11,12 @@ export type GetOrganizationReposListParams = {
   queryParameters: {};
 };
 
+export type GetOrganizationRepoBranchesListParams = {
+  organizationName: string;
+  repoName: string;
+  queryParameters: {};
+};
+
 export type CreateRepoParams = {
   repoName: string;
   token: string;
@@ -30,6 +36,10 @@ export type RepoItem = {
   updated_at: string;
   owner: { login: string; url: string };
   id: number;
+};
+
+export type BranchItem = {
+  name: string;
 };
 
 export interface IGitHubStore {
