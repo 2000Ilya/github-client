@@ -6,6 +6,7 @@ import {
   ApiResp,
   RepoItem,
   CreateRepoParams,
+  GetOrganizationRepoBranchesListParams,
 } from "./types";
 
 export default class GitHubStore implements IGitHubStore {
@@ -17,6 +18,17 @@ export default class GitHubStore implements IGitHubStore {
     return this.apiStore.request({
       headers: { Accept: "*/*" },
       endpoint: `/orgs/${params.organizationName}/repos`,
+      data: params.queryParameters,
+      method: HTTPMethod.GET,
+    });
+  }
+
+  async getOrganizationRepoBranchesList(
+    params: GetOrganizationRepoBranchesListParams
+  ): Promise<ApiResp<RepoItem[]>> {
+    return this.apiStore.request({
+      headers: { Accept: "*/*" },
+      endpoint: `/repos/${params.organizationName}/${params.repoName}/branches`,
       data: params.queryParameters,
       method: HTTPMethod.GET,
     });
