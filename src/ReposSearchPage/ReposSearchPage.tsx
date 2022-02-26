@@ -5,18 +5,16 @@ import Input from "@components/Input";
 import RepoBranchesDrawer from "@components/RepoBranchesDrawer";
 import RepoTile from "@components/RepoTile";
 import SearchIcon from "@components/SearchIcon";
-import GitHubStore from "@store/GitHubStore";
-
 import "./ReposSearchPage.css";
+import { RepoItem } from "@store/GitHubStore/types";
+import gitHubStore from "@store/gitHubStoreInstance";
 
-const gitHubStore = new GitHubStore();
-
-const ReposSearchPage = () => {
+const ReposSearchPage: React.FC = () => {
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setLoading] = useState(false);
-  const [repos, setRepos] = useState<any[]>([]);
+  const [repos, setRepos] = useState<RepoItem[]>([]);
   const [isDrawerVisible, setDrawersVisible] = useState(false);
-  const [selectedRepo, setSelectedRepo] = useState(null);
+  const [selectedRepo, setSelectedRepo] = useState<RepoItem | null>(null);
 
   const onClose = () => {
     setDrawersVisible(false);
@@ -26,39 +24,36 @@ const ReposSearchPage = () => {
     setDrawersVisible(true);
   };
 
-  const loadRepos = (e: React.MouseEvent): void => {
+  const handleInputChange = (value: string) => {
+    setInputValue(value);
+  };
+
+  const fetchReposData = async () => {
+    const result = await gitHubStore.getOrganizationReposList({
+      organizationName: inputValue,
+      queryParameters: {},
+    });
+    setRepos(result.success ? result.data : []);
+  };
+
+  const loadRepos = async (e: React.MouseEvent) => {
     setLoading(true);
-    gitHubStore
-      .getOrganizationReposList({
-        organizationName: inputValue,
-        queryParameters: {},
-      })
-      .then((result) => {
-        if (result.success) {
-          setRepos(result.data);
-        } else {
-          setRepos([]);
-        }
-        setLoading(false); // в консоли появится список репозиториев в ktsstudio
-      });
+    await fetchReposData();
+    setLoading(false);
   };
 
   return (
-    <React.Fragment>
+    <>
       <div className="repo-search-page">
         <Input
           value={inputValue}
-          onChange={(e: React.ChangeEvent<HTMLInputElement>) => {
-            setInputValue(e.target.value);
-          }}
+          onChange={handleInputChange}
           placeholder={"Введите название организации"}
         />
-        <Button
-          onClick={loadRepos}
-          children={<SearchIcon currentColor={"#FFFFFF"} />}
-          disabled={isLoading}
-        />
-        {repos.length !== 0 && (
+        <Button onClick={loadRepos} disabled={isLoading}>
+          <SearchIcon currentColor={"#FFFFFF"} />
+        </Button>
+        {!!repos.length && (
           <div className="repo-search-page__container">
             {repos.map((repoItem) => (
               <RepoTile
@@ -78,7 +73,7 @@ const ReposSearchPage = () => {
         isDrawerVisible={isDrawerVisible}
         selectedRepo={selectedRepo}
       />
-    </React.Fragment>
+    </>
   );
 };
 
