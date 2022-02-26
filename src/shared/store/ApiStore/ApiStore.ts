@@ -18,16 +18,16 @@ export default class ApiStore implements IApiStore {
   async request<SuccessT, ErrorT = any, ReqT = {}>(
     params: RequestParams<ReqT>
   ): Promise<ApiResponse<SuccessT, ErrorT>> {
-    let url = `${this.baseUrl}${params.endpoint}${
+    const url = `${this.baseUrl}${params.endpoint}${
       params.method === HTTPMethod.GET ? `?${qs.stringify(params.data)}` : ""
     }`;
 
-    let commonRequestParams = {
+    const commonRequestParams = {
       headers: params.headers,
       method: params.method,
     };
 
-    let requestParams =
+    const requestParams =
       params.method === HTTPMethod.GET
         ? commonRequestParams
         : {
@@ -36,7 +36,7 @@ export default class ApiStore implements IApiStore {
           };
 
     try {
-      let response = await fetch(url, requestParams);
+      const response = await fetch(url, requestParams);
 
       if (response.ok) {
         return {
