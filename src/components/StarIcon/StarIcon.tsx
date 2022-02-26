@@ -3,7 +3,6 @@ import "./StarIcon.css";
 
 type StarIconProps = {
   currentColor: string;
-  className: string;
 };
 
 const StarIcon: React.FC<StarIconProps> = ({ currentColor }) => {
@@ -25,4 +24,4 @@ const StarIcon: React.FC<StarIconProps> = ({ currentColor }) => {
   );
 };
 
-export default StarIcon;
+export default React.memo(StarIcon);
