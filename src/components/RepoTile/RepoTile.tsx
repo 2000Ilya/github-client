@@ -15,7 +15,7 @@ type RepoTileProps = {
 const RepoTile: React.FC<RepoTileProps> = ({ item, onClick }) => {
   return (
     <div className="repo-tile" onClick={onClick}>
-      <Avatar letter={getFirstLetter(item.name)} src={""} alt={"avatar"} />
+      <Avatar letter={getFirstLetter(item.name)} alt={"avatar"} />
       <div className="repo-tile__text-content">
         <h1 className="repo-tile__title no-margin">{item.name}</h1>
         <a
@@ -27,10 +27,7 @@ const RepoTile: React.FC<RepoTileProps> = ({ item, onClick }) => {
         <div className="repo-tile__bottom-group">
           <p className="repo-tile__stargazers-info repo-tile__default-text no-margin">
             <span>
-              <StarIcon
-                currentColor={"#FF9432"}
-                className={"repo-tile__star-icon"}
-              />
+              <StarIcon currentColor={"#FF9432"} />
             </span>
             {item.stargazers_count}
           </p>
