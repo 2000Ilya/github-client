@@ -1,0 +1,14 @@
+.avatar {
+    background-color: var(--accent);
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+}
+
+.avatar__first-letter {
+    font-weight: bold;
+    font-size: 4rem;
+    line-height: 4.7rem;
+    color: var(--background);
+    text-transform: capitalize;
+}
