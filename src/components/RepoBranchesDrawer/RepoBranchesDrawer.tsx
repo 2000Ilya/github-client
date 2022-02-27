@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 
-import GitHubStore from "@store/GitHubStore";
-import { RepoItem } from "@store/GitHubStore/types";
+import { BranchItem, RepoItem } from "@store/GitHubStore/types";
+import gitHubStore from "@store/gitHubStoreInstance";
 import { Drawer, List } from "antd";
 
 type RepoBranchesDrawerProps = {
@@ -9,31 +9,30 @@ type RepoBranchesDrawerProps = {
   onClose: () => void;
   isDrawerVisible: boolean;
 };
-const gitHubStore = new GitHubStore();
 
-const RepoBranchesDrawer = ({
+const RepoBranchesDrawer: React.FC<RepoBranchesDrawerProps> = ({
   selectedRepo,
   onClose,
   isDrawerVisible,
-}: RepoBranchesDrawerProps) => {
-  const [branches, setBranches] = useState<any[]>([]);
+}) => {
+  const [branches, setBranches] = useState<BranchItem[]>([]);
+
+  const fetchBranchesData = async (selectedRepo: RepoItem) => {
+    const result = await gitHubStore.getOrganizationRepoBranchesList({
+      organizationName: selectedRepo.owner.login,
+      repoName: selectedRepo.name,
+      queryParameters: {},
+    });
+    setBranches(result.success ? result.data : []);
+  };
 
   useEffect(() => {
     if (selectedRepo !== null) {
-      gitHubStore
-        .getOrganizationRepoBranchesList({
-          organizationName: selectedRepo.owner.login,
-          repoName: selectedRepo.name,
-          queryParameters: {},
-        })
-        .then((result) => {
-          if (result.success) {
-            setBranches(result.data);
-          } else {
-            setBranches([]);
-          }
-        });
+      fetchBranchesData(selectedRepo);
     }
+    return () => {
+      setBranches([]);
+    };
   }, [selectedRepo]);
 
   return (
