@@ -8,17 +8,21 @@ import SearchIcon from "@components/SearchIcon";
 import "./ReposSearchPage.css";
 import { RepoItem } from "@store/GitHubStore/types";
 import gitHubStore from "@store/gitHubStoreInstance";
+import { Redirect, useHistory } from "react-router-dom";
 
-const ReposSearchPage: React.FC = () => {
+type ReposSearchPageProps = {
+  setDrawersVisible: (isDrawerVisible: boolean) => void;
+  setSelectedRepo: (selectedRepo: RepoItem | null) => void;
+};
+
+const ReposSearchPage: React.FC<ReposSearchPageProps> = ({
+  setDrawersVisible,
+  setSelectedRepo,
+}) => {
   const [inputValue, setInputValue] = useState("");
   const [isLoading, setLoading] = useState(false);
   const [repos, setRepos] = useState<RepoItem[]>([]);
-  const [isDrawerVisible, setDrawersVisible] = useState(false);
-  const [selectedRepo, setSelectedRepo] = useState<RepoItem | null>(null);
-
-  const onClose = () => {
-    setDrawersVisible(false);
-  };
+  const history = useHistory();
 
   const showDrawer = () => {
     setDrawersVisible(true);
@@ -61,6 +65,7 @@ const ReposSearchPage: React.FC = () => {
                 key={repoItem.id}
                 onClick={() => {
                   setSelectedRepo(repoItem);
+                  history.push(`/repos/${repoItem.id}`);
                   showDrawer();
                 }}
               />
@@ -68,11 +73,6 @@ const ReposSearchPage: React.FC = () => {
           </div>
         )}
       </div>
-      <RepoBranchesDrawer
-        onClose={onClose}
-        isDrawerVisible={isDrawerVisible}
-        selectedRepo={selectedRepo}
-      />
     </>
   );
 };

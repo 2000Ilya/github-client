@@ -3,6 +3,7 @@ import { useEffect, useState } from "react";
 import { BranchItem, RepoItem } from "@store/GitHubStore/types";
 import gitHubStore from "@store/gitHubStoreInstance";
 import { Drawer, List } from "antd";
+import { useHistory } from "react-router-dom";
 
 type RepoBranchesDrawerProps = {
   selectedRepo: RepoItem | null;
