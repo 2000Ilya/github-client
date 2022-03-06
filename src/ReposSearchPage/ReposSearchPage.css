@@ -1,4 +1,4 @@
-.repo-list {
+.repo-search-page {
     width: 39.7rem;
     height: 100vh;
     background-color: var(--background);
@@ -9,11 +9,11 @@
     grid-template-rows: 5rem max-content;
     gap: 2rem 1.2rem;
     grid-template-areas:
-        "search-input search-button"
-        "repo-list__container repo-list__container";
+        "search-input button"
+        "repo-search-page__container repo-search-page__container";
 }
 
-.repo-list__search-input {
+.repo-search-page__search-input {
     grid-area: search-input;
     width: 29.5rem;
     height: 5rem;
@@ -27,22 +27,22 @@
     padding: 1.2rem;
 }
 
-.repo-list__search-input:focus {
+.repo-search-page__search-input:focus {
     border: 1px solid var(--accent);
     outline: none;
 }
 
-.repo-list__search-input:disabled {
+.repo-search-page__search-input:disabled {
     background-color: var(--inputDisabled);
     color: var(--colorHint);
 }
 
-.repo-list__search-input::placeholder {
+.repo-search-page__search-input::placeholder {
     color: var(--colorHint);
     font-size: 1.4rem;
 }
 
-.repo-list__search-button {
+.repo-search-page__search-button {
     grid-area: search-button;
     width: 5rem;
     height: 5rem;
@@ -51,44 +51,43 @@
     background-color: var(--accent);
 }
 
-.repo-list__search-button:hover {
+.repo-search-page__search-button:hover {
     opacity: 0.7;
     cursor: pointer;
 }
 
-.repo-list__search-button:disabled {
+.repo-search-page__search-button:disabled {
     background-color: var(--colorBorder);
 }
 
-.repo-list__search-button-icon {
+.repo-search-page__search-button-icon {
     width: 1.75rem;
     height: 1.75rem;
 }
 
-.repo-list__container {
-    grid-area: repo-list__container;
+.repo-search-page__container {
+    grid-area: repo-search-page__container;
     height: calc(100vh - 11rem);
     overflow: scroll;
     overflow-x: hidden;
-    width: fit-content;
     display: flex;
     flex-direction: column;
     gap: 1.6rem;
     padding: 0 1rem 0 0;
 }
 
-.repo-list__container::-webkit-scrollbar {
+.repo-search-page__container::-webkit-scrollbar {
     width: 0.5rem;
 }
 
-.repo-list__container::-webkit-scrollbar-track {
+.repo-search-page__container::-webkit-scrollbar-track {
     box-shadow: inset 0 0 0.6rem var(--colorBorder);
     margin-right: 1rem;
     border-radius: 2px;
     width: 0.5rem;
 }
 
-.repo-list__container::-webkit-scrollbar-thumb {
+.repo-search-page__container::-webkit-scrollbar-thumb {
     background-color: var(--colorHint);
     border-radius: 2px;
 }

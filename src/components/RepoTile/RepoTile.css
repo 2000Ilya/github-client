@@ -1,4 +1,4 @@
-.repo-card {
+.repo-tile {
     background-color: var(--background);
     border: 1px solid var(--colorBorder);
     box-sizing: border-box;
@@ -11,11 +11,11 @@
     padding: 1.2rem 1.2rem 1.2rem 1.1rem;
 }
 
-.repo-card:hover {
+.repo-tile:hover {
     cursor: pointer;
 }
 
-.repo-card__text-content {
+.repo-tile__text-content {
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -24,7 +24,7 @@
     max-width: 24rem;
 }
 
-.repo-card__title {
+.repo-tile__title {
     font-weight: bold;
     font-size: 1.6rem;
     line-height: 1.9rem;
@@ -35,35 +35,28 @@
     overflow: hidden;
 }
 
-.repo-card__link {
+.repo-tile__link {
     text-decoration: none;
 }
 
-.repo-card__link:hover {
+.repo-tile__link:hover {
     color: var(--linkHover);
     cursor: pointer;
 }
 
-.repo-card__bottom-group {
+.repo-tile__bottom-group {
     display: flex;
     flex-direction: row;
     gap: 2rem;
 }
 
-.repo-card__star-icon {
-    vertical-align: middle;
-    height: 1.4rem;
-    width: 1.4rem;
-    fill: var(--starAccent);
-}
-
-.repo-card__default-text {
+.repo-tile__default-text {
     font-weight: normal;
     font-size: 1.4rem;
     line-height: 1.6rem;
     color: var(--colorHint);
 }
 
-.repo-card__default-text span {
+.repo-tile__default-text span {
     margin-right: 0.4rem;
 }
