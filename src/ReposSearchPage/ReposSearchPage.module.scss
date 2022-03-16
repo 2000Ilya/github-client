@@ -90,7 +90,7 @@
         width: 0.5rem;
     }
 
-    ::-webkit-scrollbar-thumb {
+    &::-webkit-scrollbar-thumb {
         background-color: $colorHint;
         border-radius: 2px;
     }
