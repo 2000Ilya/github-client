@@ -34,9 +34,10 @@ export const useReposContext = () => useContext(ReposContext);
 
 const App = () => {
   const [list, setList] = useState<RepoItem[]>([]);
-  const [isLoading, setIsLoading] = useState(true);
+  const [isLoading, setIsLoading] = useState(false);
 
   const load = async (repoOwner: string) => {
+    setIsLoading(true);
     try {
       await gitHubStore
         .getOrganizationReposList({
