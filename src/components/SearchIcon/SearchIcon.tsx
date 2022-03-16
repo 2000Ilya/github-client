@@ -1,5 +1,6 @@
 import React from "react";
-import "./SearchIcon.css";
+
+import styles from "./SearchIcon.module.scss";
 
 type SearchIconProps = {
   currentColor: string;
@@ -8,7 +9,7 @@ type SearchIconProps = {
 const SearchIcon: React.FC<SearchIconProps> = ({ currentColor }) => {
   return (
     <svg
-      className="search-icon"
+      className={styles["search-icon"]}
       width="18"
       height="18"
       viewBox="0 0 18 18"

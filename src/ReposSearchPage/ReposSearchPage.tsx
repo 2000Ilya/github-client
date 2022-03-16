@@ -4,10 +4,10 @@ import Button from "@components/Button";
 import Input from "@components/Input";
 import RepoTile from "@components/RepoTile";
 import SearchIcon from "@components/SearchIcon";
-import "./ReposSearchPage.css";
 import { useHistory } from "react-router-dom";
 
 import { Consumer, useReposContext } from "../App";
+import styles from "./ReposSearchPage.module.scss";
 
 const ReposSearchPage = () => {
   const reposContext = useReposContext();
@@ -26,7 +26,7 @@ const ReposSearchPage = () => {
     <Consumer>
       {(context) => (
         <>
-          <div className="repo-search-page">
+          <div className={styles["repo-search-page"]}>
             <Input
               value={inputValue}
               onChange={handleInputChange}
@@ -36,7 +36,7 @@ const ReposSearchPage = () => {
               <SearchIcon currentColor={"#FFFFFF"} />
             </Button>
             {!!context.list.length && (
-              <div className="repo-search-page__container">
+              <div className={styles["repo-search-page__container"]}>
                 {context.list.map((repoItem) => (
                   <RepoTile
                     item={repoItem}

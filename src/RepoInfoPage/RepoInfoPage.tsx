@@ -2,10 +2,10 @@ import React, { useState } from "react";
 
 import RepoBranchesDrawer from "@components/RepoBranchesDrawer";
 import { Button, Divider } from "antd";
-import "./RepoInfoPage.css";
 import { useHistory, useParams } from "react-router-dom";
 
 import { useReposContext } from "../App";
+import styles from "./RepoInfoPage.module.scss";
 
 const RepoInfoPage = () => {
   const reposContext = useReposContext();
@@ -14,13 +14,11 @@ const RepoInfoPage = () => {
   const selectedRepo = reposContext.list.filter(
     (repo) => repo.id === Number(id)
   );
-  // eslint-disable-next-line no-console
-  console.log(selectedRepo);
   const [isDrawerVisible, setDrawerVisible] = useState<boolean>(false);
 
   return selectedRepo.length > 0 ? (
-    <div className="repo-info-page">
-      <div className="repo-info-page__container">
+    <div>
+      <div className={styles["repo-info-page__container"]}>
         <Divider plain>{selectedRepo[0].name}</Divider>
         <Divider orientation="left">Владелец репозитория:</Divider>
         <a className="flex-align-left" href={selectedRepo[0].owner.url}>

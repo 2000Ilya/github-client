@@ -10,8 +10,7 @@ import {
   useHistory,
 } from "react-router-dom";
 
-import "./App.css";
-
+import "./App.scss";
 import RepoInfoPage from "./RepoInfoPage";
 import ReposSearchPage from "./ReposSearchPage";
 

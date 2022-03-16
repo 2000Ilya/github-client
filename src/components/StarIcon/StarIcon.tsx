@@ -1,5 +1,6 @@
 import React from "react";
-import "./StarIcon.css";
+
+import styles from "./StarIcon.module.scss";
 
 type StarIconProps = {
   currentColor: string;
@@ -8,7 +9,7 @@ type StarIconProps = {
 const StarIcon: React.FC<StarIconProps> = ({ currentColor }) => {
   return (
     <svg
-      className="star-icon"
+      className={styles["star-icon"]}
       width="16"
       height="15"
       viewBox="0 0 16 15"
