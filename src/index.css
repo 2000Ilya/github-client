@@ -37,6 +37,17 @@ body {
   align-items: center;
 }
 
+.flex-align-left {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  text-align: justify;
+}
+
+.full-width {
+  width: 100%;
+}
+
 .image-container {
   overflow: hidden;
 }
