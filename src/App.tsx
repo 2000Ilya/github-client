@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 
-import RepoBranchesDrawer from "@components/RepoBranchesDrawer";
 import { RepoItem } from "@store/GitHubStore/types";
 import {
   BrowserRouter,
@@ -12,6 +11,7 @@ import {
 
 import "./App.css";
 
+import RepoInfoPage from "./RepoInfoPage";
 import ReposSearchPage from "./ReposSearchPage";
 
 const App = () => {
@@ -29,17 +29,15 @@ const App = () => {
   return (
     <div className="App">
       <BrowserRouter>
-        <ReposSearchPage
-          setDrawersVisible={setDrawerVisible}
-          setSelectedRepo={setSelectedRepo}
-        />
         <Switch>
-          <Route path="/repos/:id">
-            <RepoBranchesDrawer
-              onClose={() => onClose(history)}
-              isDrawerVisible={isDrawerVisible}
-              selectedRepo={selectedRepo}
+          <Route exact path="/repos">
+            <ReposSearchPage
+              setDrawersVisible={setDrawerVisible}
+              setSelectedRepo={setSelectedRepo}
             />
+          </Route>
+          <Route path="/repos/:id">
+            <RepoInfoPage selectedRepo={selectedRepo} />
           </Route>
           <Redirect to="/repos" />
         </Switch>
