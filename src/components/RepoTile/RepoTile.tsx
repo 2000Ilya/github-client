@@ -5,7 +5,7 @@ import { getFirstLetter } from "@utils/parseFunctions";
 
 import Avatar from "../Avatar";
 import StarIcon from "../StarIcon";
-import "./RepoTile.css";
+import styles from "./RepoTile.module.scss";
 
 type RepoTileProps = {
   item: RepoItem;
@@ -14,24 +14,32 @@ type RepoTileProps = {
 
 const RepoTile: React.FC<RepoTileProps> = ({ item, onClick }) => {
   return (
-    <div className="repo-tile" onClick={onClick}>
+    <div className={styles["repo-tile"]} onClick={onClick}>
       <Avatar letter={getFirstLetter(item.name)} alt={"avatar"} />
-      <div className="repo-tile__text-content">
-        <h1 className="repo-tile__title no-margin">{item.name}</h1>
+      <div className={styles["repo-tile__text-content"]}>
+        <h1 className={`${styles["repo-tile__title"]} no-margin`}>
+          {item.name}
+        </h1>
         <a
-          className="repo-tile__link repo-tile__default-text"
+          className={`${styles["repo-tile__link"]} ${styles["repo-tile__default-text"]}`}
           href={item.owner.url}
         >
           {item.owner.login}
         </a>
-        <div className="repo-tile__bottom-group">
-          <p className="repo-tile__stargazers-info repo-tile__default-text no-margin">
+        <div className={styles["repo-tile__bottom-group"]}>
+          <p
+            className={`
+              ${styles["repo-tile__stargazers-info"]} ${styles["repo-tile__default-text"]} no-margin
+              `}
+          >
             <span>
               <StarIcon currentColor={"#FF9432"} />
             </span>
             {item.stargazers_count}
           </p>
-          <p className="repo-tile__last-update-info repo-tile__default-text no-margin">
+          <p
+            className={`${styles["repo-tile__last-update-info"]} ${styles["repo-tile__default-text"]} no-margin`}
+          >
             {`Updated ${new Date(item.updated_at).toLocaleString("en-US", {
               month: "short",
             })} ${new Date(item.updated_at).toLocaleString("en-US", {

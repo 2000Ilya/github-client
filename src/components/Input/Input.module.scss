@@ -1,0 +1,30 @@
+@import "@styles/variables.scss";
+
+.search-input {
+    grid-area: search-input;
+    width: 29.5rem;
+    height: 5rem;
+    background: $background;
+    border: 1px solid $colorBorder;
+    box-sizing: border-box;
+    border-radius: 6px;
+    color: $colorDefault;
+    font-weight: normal;
+    font-size: 1.4rem;
+    padding: 1.2rem;
+
+    &:focus {
+        border: 1px solid $accent;
+        outline: none;
+    }
+
+    &:disabled {
+        background-color: $inputDisabled;
+        color: $colorHint;
+    }
+
+    &::placeholder {
+        color: $colorHint;
+        font-size: 1.4rem;
+    }
+}

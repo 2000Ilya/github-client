@@ -7,7 +7,7 @@
  */
 
 export type GetOrganizationReposListParams = {
-  organizationName: string;
+  organizationName: string | null;
   queryParameters: {};
 };
 
@@ -36,6 +36,7 @@ export type RepoItem = {
   updated_at: string;
   owner: { login: string; url: string };
   id: number;
+  description: string | null;
 };
 
 export type BranchItem = {

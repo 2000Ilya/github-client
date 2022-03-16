@@ -1,0 +1,16 @@
+@import "@styles/variables.scss";
+
+.avatar {
+    background-color: $accent;
+    width: 8rem;
+    height: 8rem;
+    border-radius: 50%;
+
+    &__first-letter {
+        font-weight: bold;
+        font-size: 4rem;
+        line-height: 4.7rem;
+        color: $background;
+        text-transform: capitalize;
+    }
+}
