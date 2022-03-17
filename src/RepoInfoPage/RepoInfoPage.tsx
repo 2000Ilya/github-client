@@ -52,7 +52,6 @@ const RepoInfoPage = () => {
       </div>
 
       <RepoBranchesDrawer
-        selectedRepo={selectedRepo[0]}
         onClose={() => setDrawerVisible(false)}
         isDrawerVisible={isDrawerVisible}
       />
