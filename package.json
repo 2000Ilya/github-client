@@ -1,4 +1,5 @@
 {
+  "homepage": "https://2000Ilya.github.io/github-client",
   "name": "kts-front-winter-2022",
   "version": "0.1.0",
   "private": true,
@@ -11,6 +12,7 @@
     "@types/react": "^17.0.39",
     "@types/react-dom": "^17.0.11",
     "antd": "^4.18.8",
+    "gh-pages": "^4.0.0",
     "qs": "^6.10.3",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
@@ -19,6 +21,8 @@
     "web-vitals": "^2.1.4"
   },
   "scripts": {
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "start": "react-app-rewired start",
     "build": "react-app-rewired build",
     "test": "react-app-rewired test",
