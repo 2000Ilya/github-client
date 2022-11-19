@@ -1,0 +1,15 @@
+{
+  "files": {
+    "main.css": "/github-client/static/css/main.d1d28553.css",
+    "main.js": "/github-client/static/js/main.120fe43a.js",
+    "static/media/Roboto-Regular.ttf": "/github-client/static/media/Roboto-Regular.a8d6ac03c7b96b7acb62.ttf",
+    "static/media/Roboto-Bold.ttf": "/github-client/static/media/Roboto-Bold.75371f53f06181df75f1.ttf",
+    "index.html": "/github-client/index.html",
+    "main.d1d28553.css.map": "/github-client/static/css/main.d1d28553.css.map",
+    "main.120fe43a.js.map": "/github-client/static/js/main.120fe43a.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.d1d28553.css",
+    "static/js/main.120fe43a.js"
+  ]
+}
