@@ -10,7 +10,7 @@ import {
 } from "./types";
 
 export default class GitHubStore implements IGitHubStore {
-  private readonly apiStore = new ApiStore("http://api.github.com");
+  private readonly apiStore = new ApiStore("https://api.github.com");
 
   async getOrganizationReposList(
     params: GetOrganizationReposListParams
